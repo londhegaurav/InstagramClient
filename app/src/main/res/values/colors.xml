@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textbg">#ffffff</color>
+    <color name="textfg">#000000</color>
+    <color name="contfg">#0000A0</color>
+</resources>
