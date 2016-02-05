@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/rl">
 
-    <ImageButton
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ivPhoto"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:adjustViewBounds="true"
         android:minHeight="50dp"
         android:scaleType="fitXY" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cnNum"
+        android:layout_below="@+id/ivPhoto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="10sp"
+        android:ellipsize="end"
+        android:textColor="@color/contfg"
+        android:background="@color/textbg"
+ />
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
+        android:textStyle="italic"
         android:id="@+id/tvCaption"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:maxLines="3"
         android:ellipsize="end"
-        android:layout_below="@+id/ivPhoto" />
+        android:textColor="@color/textfg"
+        android:background="@color/textbg"
+        android:layout_below="@+id/cnNum" />
+
+
+
 </RelativeLayout>

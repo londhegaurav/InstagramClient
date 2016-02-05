@@ -29,7 +29,10 @@ public class InstagramPhotoAdapter extends ArrayAdapter<InstagramPhoto> {
         }
         TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
+        TextView cnNum = (TextView) convertView.findViewById(R.id.cnNum);
         tvCaption.setText(photo.caption);
+        String cnt = String.valueOf(photo.likecount);
+        cnNum.setText(cnt + " Likes");
         ivPhoto.setImageResource(0);
         Picasso.with(getContext()).load(photo.imgUrl).into(ivPhoto);
         return convertView;
