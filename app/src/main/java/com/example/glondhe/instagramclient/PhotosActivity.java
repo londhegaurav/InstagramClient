@@ -76,12 +76,11 @@ public class PhotosActivity extends AppCompatActivity {
                         photo.username = photoJSON.getJSONObject("user").getString("username");
                         Log.i("DEBUG_username", photo.username.toString());
 
-                        if (photoJSON.getJSONObject("caption").getString("text").equals(null)) {
+                        if (photoJSON.getJSONObject("caption") != null)
                             photo.caption = photoJSON.getJSONObject("caption").getString("text");
-                            photo.caption = "Unknown";
-                        } else {
-                            photo.caption = photoJSON.getJSONObject("caption").getString("text");
-                        }
+                        else
+                            photo.caption = "";
+
                         Log.i("DEBUG_caption", photo.caption.toString());
                         photo.imgUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
                         Log.i("DEBUG_imgUrl", photo.imgUrl.toString());
@@ -89,6 +88,10 @@ public class PhotosActivity extends AppCompatActivity {
                         Log.i("DEBUG_imageHeight", String.valueOf(photo.imageHeight));
                         photo.likecount = photoJSON.getJSONObject("likes").getInt("count");
                         Log.i("DEBUG_likecount", String.valueOf(photo.likecount));
+                        photo.createdTime = photoJSON.getLong("created_time");
+                        Log.i("DEBUG_createdTime", String.valueOf(photoJSON.getLong("created_time")));
+                        photo.profileUrl = photoJSON.getJSONObject("user").optString("profile_picture");
+                        Log.i("DEBUG_profileUrl", photo.profileUrl.toString());
                         photos.add(photo);
                         swipeLayout.setRefreshing(false);
                     }
