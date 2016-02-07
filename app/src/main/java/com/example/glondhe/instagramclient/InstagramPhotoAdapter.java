@@ -3,6 +3,7 @@ package com.example.glondhe.instagramclient;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Html;
+import android.text.SpannableStringBuilder;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,7 @@ public class InstagramPhotoAdapter extends ArrayAdapter<InstagramPhoto> {
         String cnt = String.valueOf(photo.likecount);
         String cntLikes = "<font color='#3b5998'>" + cnt + " likes</font>";
 
+        SpannableStringBuilder builder = new SpannableStringBuilder();
         cnNum.setText(Html.fromHtml(cntLikes));
 
         String ct = String.valueOf(DateUtils.getRelativeTimeSpanString(photo.createdTime * 1000));
