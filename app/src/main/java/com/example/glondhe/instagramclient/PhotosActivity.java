@@ -76,7 +76,7 @@ public class PhotosActivity extends AppCompatActivity {
                         photo.username = photoJSON.getJSONObject("user").getString("username");
                         Log.i("DEBUG_username", photo.username.toString());
 
-                        if (photoJSON.getJSONObject("caption") != null)
+                        if (!photoJSON.isNull("caption"))
                             photo.caption = photoJSON.getJSONObject("caption").getString("text");
                         else
                             photo.caption = "";
@@ -92,6 +92,32 @@ public class PhotosActivity extends AppCompatActivity {
                         Log.i("DEBUG_createdTime", String.valueOf(photoJSON.getLong("created_time")));
                         photo.profileUrl = photoJSON.getJSONObject("user").optString("profile_picture");
                         Log.i("DEBUG_profileUrl", photo.profileUrl.toString());
+                        JSONArray commentsJSONArray = null;
+                        commentsJSONArray =  photoJSON.getJSONObject("comments").getJSONArray("data");
+//                        Log.i("DEBUG_commentsJSONArray", String.valueOf(commentsJSONArray.length()));
+                    //    Log.i("DEBUG_commentsJSONArray", String.valueOf(commentsJSONArray.get(2)));
+                        int k=0;
+                        for (int j = commentsJSONArray.length()-1; j > commentsJSONArray.length()-3; j--) {
+
+                            photo.comment[k]="";
+                            photo.commentUsername[k]="";
+                            if (commentsJSONArray.getJSONObject(j) != null)
+                            {
+                                JSONObject commentsJSON = commentsJSONArray.getJSONObject(j);
+                                Log.i("DEBUG_comment",  photo.comment[k]);
+                                Log.i("DEBUG_commentUsername", photo.commentUsername[k]);
+                                Log.i("DEBUG_comment_text",  commentsJSON.getString("text"));
+                                if ( commentsJSON.getString("text") != null || !commentsJSON.getString("text").isEmpty() || !commentsJSON.getJSONObject("from").getString("username").isEmpty() || commentsJSON.getJSONObject("from").getString("username") != null) {
+                                    photo.comment[k] = commentsJSON.getString("text");
+                                    photo.commentUsername[k] = commentsJSON.getJSONObject("from").getString("username");
+                                    Log.i("DEBUG_comment",  photo.comment[k]);
+                                    Log.i("DEBUG_commentUsername", photo.commentUsername[k]);
+                                }
+                            }
+
+                            k++;
+                        }
+
                         photos.add(photo);
                         swipeLayout.setRefreshing(false);
                     }
