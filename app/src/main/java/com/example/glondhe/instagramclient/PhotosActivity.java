@@ -97,7 +97,7 @@ public class PhotosActivity extends AppCompatActivity {
 //                        Log.i("DEBUG_commentsJSONArray", String.valueOf(commentsJSONArray.length()));
                     //    Log.i("DEBUG_commentsJSONArray", String.valueOf(commentsJSONArray.get(2)));
                         int k=0;
-                        for (int j = commentsJSONArray.length()-1; j > commentsJSONArray.length()-3; j--) {
+                        for (int j = 0; j < commentsJSONArray.length() - (commentsJSONArray.length() - 2); j++) {
 
                             photo.comment[k]="";
                             photo.commentUsername[k]="";
